@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DYWTBM? (HUEY)</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #967BB6;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .description {
+            color: #2c3e50;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        .input-container {
+            margin-bottom: 25px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #bdc3c7;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+            input:focus {
+                outline: none;
+                border-color: #3498db;
+            }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 12px 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+            button:hover {
+                background-color: #2980b9;
+            }
+
+        .error-message {
+            color: #e74c3c;
+            margin-top: 10px;
+            font-size: 14px;
+            height: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>DYWTBM?</h1>
+        <p class="description">
+            Hey, baby! Today is August 1, 2025! Happy girlfriend's day!!! I prepared something for you, but you'll need to answer yes or no first. Hehe. 
+            Please type "yes" or "no" in the field below. You will be redirected to different websites based on your answer.
+        </p>
+
+        <div class="input-container">
+            <input type="text" id="userInput" placeholder="Type 'yes' or 'no' here..." autocomplete="off">
+            <div class="error-message" id="errorMessage"></div>
+        </div>
+
+        <button id="submitBtn">Submit</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const userInput = document.getElementById('userInput');
+            const submitBtn = document.getElementById('submitBtn');
+            const errorMessage = document.getElementById('errorMessage');
+
+            submitBtn.addEventListener('click', handleSubmit);
+            userInput.addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    handleSubmit();
+                }
+            });
+
+            function handleSubmit() {
+                const inputValue = userInput.value.trim().toLowerCase();
+
+                if (inputValue === 'yes' || inputValue === 'no') {
+                    errorMessage.textContent = '';
+
+                    // Customize these URLs based on where you want to redirect users
+                    if (inputValue === 'yes') {
+                        window.location.href = 'YES.html';
+                    } else {
+                        window.location.href = 'NO.html';
+                    }
+                } else {
+                    errorMessage.textContent = 'Please enter either "yes" or "no"';
+                    userInput.focus();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
